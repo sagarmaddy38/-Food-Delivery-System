@@ -3,7 +3,7 @@
 const express = require('express')
 const app = express()
 const cors = require("cors");
-const port = 5000
+// const port = 5000
 
 
 global.foodData = require('./bd')(function call(err, data, CatData) {
@@ -39,6 +39,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', require('./Routes/Auth'));
 
-app.listen(port, () => {
-  console.log(`Example app listening on http://localhost:${port}`)
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on http://localhost:${PORT}`)
 })
